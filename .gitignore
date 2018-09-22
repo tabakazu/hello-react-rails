@@ -1,3 +1,15 @@
+## SystemFile.gitignore
+# Ignore other unneeded files.
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+Thumbs.db
+
+
 ## Ruby.gitignore
 *.gem
 *.rbc
