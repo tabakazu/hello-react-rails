@@ -29,7 +29,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rack-cors'
 
 # Use JWT authentication
-gem 'knock', '~> 2.1.1'
+# gem 'knock', '~> 2.1.1'
+
+# Use JSON Web Token
+gem 'jwt', '~> 1.5.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
