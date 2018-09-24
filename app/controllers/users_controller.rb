@@ -10,6 +10,19 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /users/token
+  def token
+    user = User.find_by(email: user_params[:email])
+    payload = {:user => {:id => user.id}}
+    
+    if user && user.authenticate(user_params[:password])
+      auth_token = JWT.encode(payload, nil, 'none')
+      render json: { auth_token: auth_token }, status: :ok
+    else
+      render json: { error: 'Invalid username / password' }, status: :unauthorized
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
