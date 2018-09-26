@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   # POST /users/token
   def token
     user = User.find_by(email: user_params[:email])
-    payload = {:user => {:id => user.id}}
-    
+    payload = { user: { id: user.id }}
+
     if user && user.authenticate(user_params[:password])
       auth_token = JWT.encode(payload, nil, 'none')
       render json: { auth_token: auth_token }, status: :ok
