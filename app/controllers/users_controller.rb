@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show]
+
   # POST /users
   def create
     @user = User.new(user_params)
@@ -8,6 +10,12 @@ class UsersController < ApplicationController
     else
       render json: @user.errors, status: :unprocessable_entity
     end
+  end
+
+  # GET /users/1
+  def show
+    @microposts = Micropost.where(user_id: @user.id)
+    render json: { user: { id: @user.id, microposts: @microposts }}
   end
 
   # POST /users/token
