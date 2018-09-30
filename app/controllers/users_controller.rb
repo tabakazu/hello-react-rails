@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     payload = { user: { id: user.id }}
 
     if user && user.authenticate(user_params[:password])
-      auth_token = JWT.encode(payload, nil, 'none')
+      auth_token = JsonWebToken.encode(payload)
       render json: { auth_token: auth_token }, status: :ok
     else
       render json: { error: 'Invalid username / password' }, status: :unauthorized
