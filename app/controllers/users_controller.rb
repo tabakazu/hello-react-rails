@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     render json: { user: { id: @user.id, microposts: @microposts }}
   end
 
+  # GET /users/myself
+  def myself
+    @user = User.find(current_user_id)
+    render json: @user
+  end
+
   # POST /users/token
   def token
     user = User.find_by(email: user_params[:email])
