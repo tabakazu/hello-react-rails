@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:create, :show] do
     collection do
+      get 'myself'
       post 'token'
     end
   end
