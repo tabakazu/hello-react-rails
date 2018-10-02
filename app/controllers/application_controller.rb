@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::API
-  require 'json_web_token'
+  require 'auth_token'
 
   private
-    def current_user_id
-      token = request.headers['Authorization'].split(' ').last
-      JsonWebToken.decode(token)[0]['user']['id']
+    def authenticate
+      begin
+        token = request.headers['Authorization'].split(' ').last
+        payload, _ = AuthToken.valid?(token)
+        @current_user = User.find_by(id: payload['user_id'])
+      rescue
+        render json: { error: 'Authorization header not valid'}, status: :unauthorized
+      end
     end
 end
