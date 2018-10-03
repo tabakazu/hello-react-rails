@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :authenticate, only: [:myself]
+  before_action :authenticate, only: [:index]
 
-  # GET /users/myself
-  def myself
+  # GET /users
+  def index
     render json: @current_user
   end
 end
