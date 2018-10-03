@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/myself'
-  post '/auth/register'
-  post '/auth/authenticate'
+  resources :users, only: [:index]
+  namespace :auth do
+    post 'register'
+    post 'authenticate'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
