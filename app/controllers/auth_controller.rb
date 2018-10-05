@@ -1,4 +1,6 @@
 class AuthController < ApplicationController
+  before_action :authenticate, only: [:user]
+
   # POST /auth/register
   def register
     user = User.new(user_params)
@@ -20,6 +22,11 @@ class AuthController < ApplicationController
     else
       render json: { error: "Invalid email/password combination" }, status: :unauthorized
     end
+  end
+
+  # GET /auth/user
+  def user
+    render json: @current_user
   end
 
   private
