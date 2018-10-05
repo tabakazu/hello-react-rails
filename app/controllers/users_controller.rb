@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate, only: [:index]
   before_action :set_user, only: [:show]
-
-  # GET /users
-  def index
-    render json: @current_user
-  end
 
   # GET /users/1
   def show
