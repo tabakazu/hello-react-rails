@@ -1,4 +1,4 @@
-class MicropostsController < ApplicationController
+class Users::MicropostsController < ApplicationController
   before_action :set_user, only: [:index]
 
   # GET /users/1/microposts

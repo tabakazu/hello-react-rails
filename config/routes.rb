@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [:show] do
-    resources :microposts, only: [:index]
+    resources :microposts, only: [:index], controller: 'users/microposts'
   end
   namespace :auth do
     post 'register'
