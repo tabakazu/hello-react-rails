@@ -1,5 +1,17 @@
 class MicropostsController < ApplicationController
+  before_action :authenticate, only: [:create]
   before_action :set_micropost, only: [:show]
+
+  # POST /microposts
+  def create
+    micropost = Micropost.new(micropost_param)
+    micropost.user_id = @current_user.id
+    if micropost.save
+      render json: micropost, status: :created
+    else
+      render json: { errors: micropost.errors }
+    end
+  end
 
   # GET /microposts/1
   def show
@@ -14,5 +26,10 @@ class MicropostsController < ApplicationController
       rescue
         render json: { error: 'Not found'}, status: 404
       end
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def micropost_param
+      params.require(:micropost).permit(:content)
     end
 end
