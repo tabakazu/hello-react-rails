@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :microposts, only: [:index], controller: 'users/microposts'
   end
-  resources :microposts, only: [:show]
+  resources :microposts, only: [:create, :show]
   namespace :auth do
     post 'register'
     post 'token'
