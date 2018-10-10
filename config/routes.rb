@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :microposts, only: [:index], controller: 'users/microposts'
   end
-  resources :microposts, only: [:create, :show]
+  resources :microposts, only: [:create, :show] do
+    resource :like, only: [:create, :destroy], controller: 'microposts/like'
+  end
   namespace :auth do
     post 'register'
     post 'token'
