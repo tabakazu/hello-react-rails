@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :microposts, only: [:create, :show] do
     resource :like, only: [:create, :destroy], controller: 'microposts/like'
+    get 'likes', controller: 'microposts/like'
   end
   namespace :auth do
     post 'register'
