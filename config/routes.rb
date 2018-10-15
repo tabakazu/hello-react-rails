@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :microposts, only: [:index], controller: 'users/microposts'
     get 'liking', controller: 'users/like'
-    resource :follow, only: [:create, :destroy], controller: 'users/follow'
     get 'following', controller: 'users/follow'
     get 'followers', controller: 'users/follow'
   end
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
     get 'likes', controller: 'microposts/like'
   end
   resource :like, only: [:create, :destroy], controller: 'like'
+  resource :follow, only: [:create, :destroy], controller: 'follow'
   namespace :auth do
     post 'register'
     post 'token'
