@@ -34,6 +34,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use JSON Web Token
 gem 'jwt', '~> 1.5.6'
 
+# Use webpacker
+gem 'webpacker', '~> 3.5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
