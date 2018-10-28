@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
   root 'home#index'
-  resources :users, only: [:show] do
-    resources :microposts, only: [:index], controller: 'users/microposts'
-    get 'liking', controller: 'users/like'
-    get 'following', controller: 'users/follow'
-    get 'followers', controller: 'users/follow'
-  end
-  resources :microposts, only: [:create, :show] do
-    get 'likes', controller: 'microposts/like'
-  end
-  resource :like, only: [:create, :destroy], controller: 'like'
-  resource :follow, only: [:create, :destroy], controller: 'follow'
-  namespace :auth do
-    post 'register'
-    post 'token'
-    get 'user'
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:show] do
+        resources :microposts, only: [:index], controller: 'users/microposts'
+        get 'liking', controller: 'users/like'
+        get 'following', controller: 'users/follow'
+        get 'followers', controller: 'users/follow'
+      end
+      resources :microposts, only: [:create, :show] do
+        get 'likes', controller: 'microposts/like'
+      end
+      resource :like, only: [:create, :destroy], controller: 'like'
+      resource :follow, only: [:create, :destroy], controller: 'follow'
+      namespace :auth do
+        post 'register'
+        post 'token'
+        get 'user'
+      end  
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
