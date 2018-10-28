@@ -1,4 +1,4 @@
-class Users::MicropostsController < ApplicationController
+class Api::V1::Users::MicropostsController < ApplicationController
   before_action :set_user, only: [:index]
 
   # GET /users/1/microposts
@@ -14,5 +14,5 @@ class Users::MicropostsController < ApplicationController
       rescue
         render json: { error: 'Not found'}, status: 404
       end
-    end  
+    end
 end
