@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'home#index'
   resources :users, only: [:show] do
     resources :microposts, only: [:index], controller: 'users/microposts'
     get 'liking', controller: 'users/like'
