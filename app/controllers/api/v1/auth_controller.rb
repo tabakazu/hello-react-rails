@@ -1,4 +1,4 @@
-class AuthController < ApplicationController
+class Api::V1::AuthController < ApplicationController
   before_action :authenticate, only: [:user]
 
   # POST /auth/register

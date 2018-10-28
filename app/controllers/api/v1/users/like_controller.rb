@@ -1,12 +1,8 @@
-class Users::FollowController < ApplicationController
-  before_action :set_user, only: [:following, :followers]
+class Api::V1::Users::LikeController < ApplicationController
+  before_action :set_user, only: [:liking]
 
-  def following
-    render json: @user.following
-  end
-
-  def followers
-    render json: @user.followers
+  def liking
+    render json: @user.likes
   end
 
   private
@@ -17,5 +13,5 @@ class Users::FollowController < ApplicationController
       rescue
         render json: { error: 'Not found'}, status: 404
       end
-    end  
+    end
 end

@@ -1,4 +1,4 @@
-class MicropostsController < ApplicationController
+class Api::V1::MicropostsController < ApplicationController
   before_action :authenticate, only: [:create]
   before_action :set_micropost, only: [:show]
 

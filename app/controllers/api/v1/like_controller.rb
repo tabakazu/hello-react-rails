@@ -1,4 +1,4 @@
-class LikeController < ApplicationController
+class Api::V1::LikeController < ApplicationController
   before_action :authenticate, only: [:create, :destroy]
 
   def create

@@ -1,4 +1,4 @@
-class FollowController < ApplicationController
+class Api::V1::FollowController < ApplicationController
   before_action :authenticate, only: [:create, :destroy]
 
   def create

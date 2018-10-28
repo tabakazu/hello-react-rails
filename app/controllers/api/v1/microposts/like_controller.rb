@@ -1,4 +1,4 @@
-class Microposts::LikeController < ApplicationController
+class Api::V1::Microposts::LikeController < ApplicationController
   before_action :set_micropost, only: [:likes]
 
   def likes
