@@ -10,7 +10,7 @@ class Api::V1::Users::MicropostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       begin
-        @user = User.find(params[:user_id])
+        @user = User.find_by(name: params[:user_id])
       rescue
         render json: { error: 'Not found'}, status: 404
       end
