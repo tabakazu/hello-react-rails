@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import auth from '../reducers/auth'
 
-export default combineReducers({
+const IndexReducer = combineReducers({
   auth
 })
+
+export default IndexReducer

@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from '../components/App'
-import rootReducer from '../reducers'
+import IndexReducer from '../reducers'
 
-const store = createStore(rootReducer)
+const store = createStore(IndexReducer)
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
