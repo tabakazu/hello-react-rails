@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { loginRequest } from '../actions/auth'
 
 class Login extends React.Component {
-	constructor(props) {
+  constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -12,8 +12,10 @@ class Login extends React.Component {
     e.preventDefault()
 
     this.props.dispatch(loginRequest({
-      email: e.target.email.value.trim(),
-      password: e.target.password.value.trim()
+      user: {
+        email: e.target.email.value.trim(),
+        password: e.target.password.value.trim()
+      }
     }))
   }
 

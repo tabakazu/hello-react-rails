@@ -1,7 +1,6 @@
-export const loginRequest = function loginRequest({ email, password }) {
+export const loginRequest = ({ user }) => {
   return {
     type: 'AUTH_REQUEST',
-    email,
-    password
+    user: user
   }
 }
