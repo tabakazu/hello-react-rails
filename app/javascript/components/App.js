@@ -1,21 +1,39 @@
 import React from 'react'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from '../components/Home'
-import About from '../components/About'
-import Login from '../components/Login'
-import User from '../components/User'
+import { Login } from '../containers'
+import { loginRequest } from '../actions/auth'
+
+// Reducer
+import { authReducer } from '../reducers'
+
+// Saga
+import 'babel-polyfill'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from '../sagas'
+
+const sagaMiddleware = createSagaMiddleware()
+
+const store = createStore(
+  authReducer,
+  applyMiddleware(sagaMiddleware)
+)
+
+sagaMiddleware.run(rootSaga)
 
 class App extends React.Component {
   render () {
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/:username" component={User} />
-        </Switch>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+          </Switch>
+        </Router>
+      </Provider>
     )
   }
 }
