@@ -4,13 +4,12 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from '../components/Home'
 import { Login } from '../containers'
-import { loginRequest } from '../actions/auth'
+import { fetchLoginStateRequest, loginRequest } from '../actions/auth'
 
 // Reducer
 import { authReducer } from '../reducers'
 
 // Saga
-import 'babel-polyfill'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from '../sagas'
 
@@ -24,6 +23,12 @@ const store = createStore(
 sagaMiddleware.run(rootSaga)
 
 class App extends React.Component {
+  componentWillMount() {
+    console.log(store.getState())
+    store.dispatch(fetchLoginStateRequest())
+    console.log(store.getState())
+  }
+
   render () {
     return (
       <Provider store={store}>
