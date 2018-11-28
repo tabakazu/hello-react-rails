@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loginRequest } from '../actions/auth'
 
@@ -21,13 +22,17 @@ class Login extends React.Component {
 
   render () {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input name="email" type="email" placeholder="Email ..." /> <br />
-          <input name="password" type="password" placeholder="Password ..." /> <br />
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+      this.props.state.isLoggedIn ? (
+        <Redirect to="/" />
+      ) : (
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input name="email" type="email" placeholder="Email ..." /> <br />
+            <input name="password" type="password" placeholder="Password ..." /> <br />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      )
     )
   }
 }
