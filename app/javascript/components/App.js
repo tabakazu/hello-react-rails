@@ -2,9 +2,8 @@ import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from '../components/Home'
 import PrivateRoute from '../components/PrivateRoute'
-import { Login } from '../containers'
+import { Home, Login } from '../containers'
 import { fetchLoginStateRequest, loginRequest } from '../actions/auth'
 
 // Reducer
@@ -25,9 +24,7 @@ sagaMiddleware.run(rootSaga)
 
 class App extends React.Component {
   componentWillMount() {
-    console.log(store.getState())
     store.dispatch(fetchLoginStateRequest())
-    console.log(store.getState())
   }
 
   render () {
