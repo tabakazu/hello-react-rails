@@ -25,7 +25,9 @@ export function* handleLogin(action) {
         console.log(error)
       })
 
-    yield put(login())
+    if (token) {
+      yield put(login())
+    }
 
     console.log('成功')
   } catch (e) {
