@@ -8,8 +8,9 @@ class PrivateRoute extends React.Component {
   }
 
   render () {
+    const isLoggedIn = this.props.state.isLoggedIn
     return (
-      this.props.state.isLoggedIn ? (
+      isLoggedIn ? (
         <div>{this.props.children}</div>
       ) : (
         <Redirect to="/login" />

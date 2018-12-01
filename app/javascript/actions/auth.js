@@ -11,8 +11,9 @@ export const loginRequest = ({ user }) => {
   }
 }
 
-export const login = () => {
+export const login = ({ user }) => {
   return {
-    type: 'AUTH_SUCCESS'
+    type: 'AUTH_SUCCESS',
+    user: user
   }
 }

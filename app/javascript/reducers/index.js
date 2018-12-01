@@ -12,7 +12,9 @@ export const authReducer = (state = initialState, action) => {
     }
     case 'AUTH_SUCCESS': {
       return {
-        isLoggedIn: true
+        actionType: action.type,
+        isLoggedIn: true,
+        user: action.user
       }
     }
     default:
