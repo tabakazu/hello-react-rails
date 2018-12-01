@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PrivateRoute from '../components/PrivateRoute'
-import { Home, Login } from '../containers'
+import { MyPage, Login } from '../containers'
 import { fetchLoginStateRequest, loginRequest } from '../actions/auth'
 
 // Reducer
@@ -34,7 +34,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/login" component={Login} />
             <PrivateRoute>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={MyPage} />
             </PrivateRoute>
           </Switch>
         </Router>

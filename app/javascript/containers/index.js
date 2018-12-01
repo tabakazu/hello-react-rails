@@ -1,7 +1,7 @@
-import Home from '../containers/Home'
+import MyPage from '../containers/MyPage'
 import Login from '../containers/Login'
 
 export {
-  Home,
+  MyPage,
   Login
 }
