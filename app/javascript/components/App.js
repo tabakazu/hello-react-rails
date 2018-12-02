@@ -4,10 +4,10 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PrivateRoute from '../components/PrivateRoute'
 import { MyPage, Login } from '../containers'
-import { fetchLoginStateRequest, loginRequest } from '../actions/auth'
+import { fetchLoginStateRequest } from '../actions/login'
 
 // Reducer
-import { authReducer } from '../reducers'
+import { rootReducer } from '../reducers'
 
 // Saga
 import createSagaMiddleware from 'redux-saga'
@@ -16,7 +16,7 @@ import rootSaga from '../sagas'
 const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
-  authReducer,
+  rootReducer,
   applyMiddleware(sagaMiddleware)
 )
 
