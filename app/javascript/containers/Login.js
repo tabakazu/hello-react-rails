@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loginRequest } from '../actions/auth'
+import { loginRequest } from '../actions/login'
 
 class Login extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Login extends React.Component {
 
   render () {
     return (
-      this.props.state.isLoggedIn ? (
+      this.props.state.login.isLoggedIn ? (
         <Redirect to="/" />
       ) : (
         <div>

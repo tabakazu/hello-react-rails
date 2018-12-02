@@ -1,23 +1,8 @@
-const initialState = {
-  isLoggedIn: false
-}
+import { combineReducers } from 'redux'
+import { loginReducer } from '../reducers/login'
+import { micropostReducer } from '../reducers/micropost'
 
-export const authReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'AUTH_STATE_REQUEST': {
-      return state
-    }
-    case 'AUTH_REQUEST': {
-      return state
-    }
-    case 'AUTH_SUCCESS': {
-      return {
-        actionType: action.type,
-        isLoggedIn: true,
-        user: action.user
-      }
-    }
-    default:
-      return state
-  }
-}
+export const rootReducer = combineReducers({
+  login: loginReducer,
+  micropost: micropostReducer
+})

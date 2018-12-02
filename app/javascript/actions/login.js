@@ -1,19 +1,19 @@
 export const fetchLoginStateRequest = () => {
   return {
-    type: 'AUTH_STATE_REQUEST',
+    type: 'LOGIN_STATE_REQUEST',
   }
 }
 
 export const loginRequest = ({ user }) => {
   return {
-    type: 'AUTH_REQUEST',
+    type: 'LOGIN_REQUEST',
     user: user
   }
 }
 
 export const login = ({ user }) => {
   return {
-    type: 'AUTH_SUCCESS',
+    type: 'LOGIN_SUCCESS',
     user: user
   }
 }
