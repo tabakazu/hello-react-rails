@@ -1,9 +1,9 @@
 import { takeEvery } from 'redux-saga/effects'
-import { handleLogin, handleFetchLoginState } from '../sagas/login'
+import { handleFetchLoginState, handleLoginRequest } from '../sagas/login'
 import { handleCreateMicropost } from '../sagas/micropost'
 
 export default function* rootSaga() {
-  yield takeEvery('LOGIN_STATE_REQUEST', handleFetchLoginState)
-  yield takeEvery('LOGIN_REQUEST', handleLogin)
+  yield takeEvery('FETCH_LOGIN_STATE', handleFetchLoginState)
+  yield takeEvery('LOGIN_REQUEST', handleLoginRequest)
   yield takeEvery('CREATE_MICROPOST_REQUEST', handleCreateMicropost)
 }

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PrivateRoute from '../components/PrivateRoute'
 import { MyPage, Login } from '../containers'
-import { fetchLoginStateRequest } from '../actions/login'
+import { fetchLoginState } from '../actions/login'
 
 // Reducer
 import { rootReducer } from '../reducers'
@@ -24,7 +24,7 @@ sagaMiddleware.run(rootSaga)
 
 class App extends React.Component {
   componentWillMount() {
-    store.dispatch(fetchLoginStateRequest())
+    store.dispatch(fetchLoginState())
   }
 
   render () {

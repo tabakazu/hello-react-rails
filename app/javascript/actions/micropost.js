@@ -5,13 +5,13 @@ export const createMicropostRequest = ({ micropost }) => {
   }
 }
 
-export const successCreateMicropost = () => {
+export const createMicropostSuccess = () => {
   return {
     type: 'CREATE_MICROPOST_SUCCESS'
   }
 }
 
-export const failureCreateMicropost = () => {
+export const createMicropostFailure = () => {
   return {
     type: 'CREATE_MICROPOST_FAILURE'
   }
