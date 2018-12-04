@@ -1,11 +1,10 @@
 import 'babel-polyfill'
 import { call, put } from 'redux-saga/effects'
 import axios from 'axios'
-import { fetchLoginStateRequest, loginRequest, login } from '../actions/login'
+import { fetchLoginState, setLoginState } from '../actions/login'
 
 export function* handleFetchLoginState(){
   try {
-    yield call(fetchLoginStateRequest)
     const token = localStorage.getItem('token')
     if (token) {
       const headers = { headers: { 'Authorization': token }}
@@ -13,21 +12,21 @@ export function* handleFetchLoginState(){
       const user = {
         user: response.data
       }
-      yield put(login(user))
+      yield put(setLoginState(user))
     }
   } catch (e) {
     console.log(e.message)
   }
 }
 
-export function* handleLogin(action) {
+export function* handleLoginRequest(action) {
   try {
-    const user = yield call(loginRequest, action)
+    const user = { user: action.user }
     const response = yield axios.post(`/api/v1/auth/token`, user)
     const token = response.data.token
     if (token) {
       localStorage.setItem('token', token)
-      yield put(fetchLoginStateRequest())
+      yield put(fetchLoginState())
     }
   } catch (e) {
     console.log(e.message)
