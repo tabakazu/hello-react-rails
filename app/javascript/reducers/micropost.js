@@ -1,5 +1,4 @@
 const initialState = {
-  isLoggedIn: false
 }
 
 export const micropostReducer = (state = initialState, action) => {
