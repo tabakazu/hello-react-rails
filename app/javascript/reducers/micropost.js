@@ -4,9 +4,7 @@ const initialState = {
 export const micropostReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_MICROPOST_REQUEST': {
-      return {
-        micropost: action.micropost
-      }
+      return state
     }
     case 'CREATE_MICROPOST_SUCCESS': {
       return state
