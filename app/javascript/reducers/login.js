@@ -1,5 +1,6 @@
 const initialState = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  isFailed: false
 }
 
 export const loginReducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ export const loginReducer = (state = initialState, action) => {
     }
     case 'LOGIN_REQUEST': {
       return state
+    }
+    case 'LOGIN_FAILURE': {
+      return {
+        isFailed: true
+      }
     }
     default:
       return state
