@@ -1,4 +1,5 @@
 const initialState = {
+  isFailed: false
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -9,11 +10,14 @@ export const userReducer = (state = initialState, action) => {
     case 'FETCH_USER_SUCCESS': {
       return {
         name: action.user.name,
-        email: action.user.email
+        email: action.user.email,
+        isFailed: false
       }
     }
     case 'FETCH_USER_FAILURE': {
-      return state
+      return {
+        isFailed: true
+      }
     }
     default:
       return state

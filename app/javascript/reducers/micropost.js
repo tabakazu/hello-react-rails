@@ -1,4 +1,5 @@
 const initialState = {
+  isFailed: false
 }
 
 export const micropostReducer = (state = initialState, action) => {
@@ -10,7 +11,9 @@ export const micropostReducer = (state = initialState, action) => {
       return state
     }
     case 'CREATE_MICROPOST_FAILURE': {
-      return state
+      return {
+        isFailed: true
+      }
     }
     default:
       return state

@@ -17,3 +17,9 @@ export const loginRequest = ({ user }) => {
     user: user
   }
 }
+
+export const loginFailure = () => {
+  return {
+    type: 'LOGIN_FAILURE'
+  }
+}

@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import { call, put } from 'redux-saga/effects'
 import axios from 'axios'
-import { fetchLoginState, setLoginState } from '../actions/login'
+import { fetchLoginState, setLoginState, loginFailure } from '../actions/login'
 
 export function* handleFetchLoginState(){
   try {
@@ -15,6 +15,7 @@ export function* handleFetchLoginState(){
       yield put(setLoginState(user))
     }
   } catch (e) {
+    yield put(loginFailure())
     console.log(e.message)
   }
 }
@@ -29,6 +30,7 @@ export function* handleLoginRequest(action) {
       yield put(fetchLoginState())
     }
   } catch (e) {
+    yield put(loginFailure())
     console.log(e.message)
   }
 }
