@@ -17,12 +17,18 @@ class User extends React.Component {
 
   render () {
     return (
-      <div>
-        <ul>
-          <li>Username : {this.props.state.user.name}</li>
-          <li>Email : {this.props.state.user.email}</li>
-        </ul>
-      </div>
+      this.props.state.user.isFailed ? (
+        <div>
+          <p>Sorry, that page doesn’t exist!</p>
+        </div>
+      ) : (
+        <div>
+          <ul>
+            <li>Username : {this.props.state.user.name}</li>
+            <li>Email : {this.props.state.user.email}</li>
+          </ul>
+        </div>
+      )
     )
   }
 }
