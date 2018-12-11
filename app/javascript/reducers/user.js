@@ -11,6 +11,7 @@ export const userReducer = (state = initialState, action) => {
       return {
         name: action.user.name,
         email: action.user.email,
+        microposts: action.user.microposts,
         isFailed: false
       }
     }
