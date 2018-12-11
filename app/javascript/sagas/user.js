@@ -7,9 +7,15 @@ export function* handleFetchUser(action) {
   try {
     const username = action.user.name
     if (username) {
-      const response = yield axios.get(`/api/v1/users/` + username)
-      const user = response.data
-      yield put(fetchUserSuccess({ user }))
+      const user = yield axios.get(`/api/v1/users/` + username)
+      const microposts = yield axios.get(`/api/v1/users/` + username + `/microposts`)
+      yield put(fetchUserSuccess({
+        user: {
+          name: user.data.name,
+          email: user.data.email,
+          microposts: microposts.data
+        }
+      }))
     }
   } catch (e) {
     yield put(fetchUserFailure())

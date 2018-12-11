@@ -16,6 +16,7 @@ class User extends React.Component {
   }
 
   render () {
+    const microposts = this.props.state.user.microposts　? this.props.state.user.microposts : []
     return (
       this.props.state.user.isFailed ? (
         <div>
@@ -27,6 +28,20 @@ class User extends React.Component {
             <li>Username : {this.props.state.user.name}</li>
             <li>Email : {this.props.state.user.email}</li>
           </ul>
+          <div>
+            <ul>
+              {(() => {
+                if (microposts)
+                  return (
+                    microposts.map((micropost, i) =>
+                      <li key={i}>
+                        {micropost.content}
+                      </li>
+                    )
+                  )
+              })()}
+            </ul>
+          </div>
         </div>
       )
     )
