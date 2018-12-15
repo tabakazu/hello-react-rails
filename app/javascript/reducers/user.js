@@ -9,6 +9,7 @@ export const userReducer = (state = initialState, action) => {
     }
     case 'FETCH_USER_SUCCESS': {
       return {
+        id: action.user.id,
         name: action.user.name,
         email: action.user.email,
         microposts: action.user.microposts,
