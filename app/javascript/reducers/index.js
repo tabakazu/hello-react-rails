@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import { loginReducer } from '../reducers/login'
-import { micropostReducer } from '../reducers/micropost'
 import { userReducer } from '../reducers/user'
+import { followReducer } from '../reducers/follow'
 
 export const rootReducer = combineReducers({
   login: loginReducer,
-  micropost: micropostReducer,
-  user: userReducer
+  user: userReducer,
+  follow: followReducer
 })
