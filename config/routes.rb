@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:show] do
         resources :microposts, only: [:index], controller: 'users/microposts'
+        resources :timelines, only: [:index], controller: 'users/timelines'
         get 'liking', controller: 'users/like'
         get 'following', controller: 'users/follow'
         get 'followers', controller: 'users/follow'
