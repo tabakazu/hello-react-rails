@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import MicropostForm from '../containers/mypage/MicropostForm'
+import TimelineList from '../containers/mypage/TimelineList'
 
 class MyPage extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class MyPage extends React.Component {
           <li>Email : {user.email}</li>
         </ul>
         <MicropostForm />
+        <TimelineList />
       </div>
     )
   }
