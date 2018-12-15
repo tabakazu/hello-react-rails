@@ -2,11 +2,11 @@ class Api::V1::Users::FollowController < ApplicationController
   before_action :set_user, only: [:following, :followers]
 
   def following
-    render json: @user.following.map{ |follow| follow.slice(:id, :name) }
+    render json: @user.following.map{ |follow| follow.slice(:id, :name, :created_at, :updated_at) }
   end
 
   def followers
-    render json: @user.followers
+    render json: @user.followers.map{ |follow| follow.slice(:id, :name, :created_at, :updated_at) }
   end
 
   private
