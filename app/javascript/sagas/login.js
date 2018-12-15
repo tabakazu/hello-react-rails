@@ -8,11 +8,17 @@ export function* handleFetchLoginState(){
     const token = localStorage.getItem('token')
     if (token) {
       const headers = { headers: { 'Authorization': token }}
-      const response = yield axios.get(`/api/v1/auth/user`, headers)
-      const user = {
-        user: response.data
-      }
-      yield put(setLoginState(user))
+      const user = yield axios.get(`/api/v1/auth/user`, headers)
+      const following = yield axios.get(`/api/v1/users/` + user.data.name + `/following` , headers)
+
+      yield put(setLoginState({
+        user: {
+          id: user.data.id,
+          name: user.data.name,
+          email: user.data.email,
+          following: following.data
+        }
+      }))
     }
   } catch (e) {
     yield put(loginFailure())
@@ -25,6 +31,7 @@ export function* handleLoginRequest(action) {
     const user = { user: action.user }
     const response = yield axios.post(`/api/v1/auth/token`, user)
     const token = response.data.token
+    
     if (token) {
       localStorage.setItem('token', token)
       yield put(fetchLoginState())
