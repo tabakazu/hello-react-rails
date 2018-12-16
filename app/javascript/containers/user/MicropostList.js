@@ -10,19 +10,20 @@ import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 import Typography from '@material-ui/core/Typography'
 
-class TimelineList extends React.Component {
+class MicropostList extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render () {
-    const timelines = this.props.state.login.user.timelines ? this.props.state.login.user.timelines : []
-    const timelineList = timelines.map((micropost, i) =>
+    const user = this.props.state.user
+    const microposts = this.props.state.user.microposts ? this.props.state.user.microposts : []
+    const micropostList = microposts.map((micropost, i) =>
       <TableRow key={i}>
         <TableCell>
           <div style={{ margin: 10 }}>
             <Typography color="textSecondary">
-              {micropost.user_name}
+              {user.name}
             </Typography>
 
             <Typography variant="subtitle1">
@@ -37,7 +38,7 @@ class TimelineList extends React.Component {
       </TableRow>
     )
 
-    if (timelines.length == 0) {
+    if (microposts.length == 0) {
       return false
     }
 
@@ -46,13 +47,13 @@ class TimelineList extends React.Component {
         <Card>
           <CardContent>
             <Typography color="textSecondary">
-              Timeline
+              Micropost
             </Typography>
           </CardContent>
           
           <Table>
             <TableBody>
-              {timelineList}
+              {micropostList}
             </TableBody>
           </Table>
         </Card>
@@ -64,4 +65,4 @@ class TimelineList extends React.Component {
 function mapStateToProps(state) {
   return { state }
 }
-export default connect(mapStateToProps)(TimelineList)
+export default connect(mapStateToProps)(MicropostList)

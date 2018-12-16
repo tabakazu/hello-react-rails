@@ -1,13 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import FollowButton from '../containers/user/FollowButton'
+import MicropostList from '../containers/user/MicropostList'
 import { fetchUserRequest } from '../actions/user'
-import { fetchFollowState, createFollowtRequest, deleteFollowtRequest } from '../actions/follow'
+import { fetchFollowState } from '../actions/follow'
+
+// Material UI
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
 
 class User extends React.Component {
   constructor(props) {
     super(props)
-    this.handleFollow = this.handleFollow.bind(this)
-    this.handleUnFollow = this.handleUnFollow.bind(this)
   }
 
   componentWillMount() {
@@ -24,64 +29,39 @@ class User extends React.Component {
     }))
   }
 
-  handleFollow() {
-    this.props.dispatch(createFollowtRequest({
-      user: {
-        name: this.props.match.params.username
-      }
-    }))
-  }
-
-  handleUnFollow() {
-    this.props.dispatch(deleteFollowtRequest({
-      user: {
-        name: this.props.match.params.username
-      }
-    }))
-  }
-
   render () {
-    const isLoggedIn = this.props.state.login.isLoggedIn
+    const user = this.props.state.user
     const microposts = this.props.state.user.microposts ? this.props.state.user.microposts : []
     return (
-      this.props.state.user.isFailed ? (
+      user.isFailed ? (
         <div>
           <p>Sorry, that page doesn’t exist!</p>
         </div>
       ) : (
         <div>
-          <ul>
-            <li>Username : {this.props.state.user.name}</li>
-            <li>Email : {this.props.state.user.email}</li>
-          </ul>
-          {(() => {
-            if (isLoggedIn) {
-              if (!this.props.state.follow.isFollowing) {
-                return (
-                  <button onClick={this.handleFollow}>Follow</button>
-                )
-              } else {
-                return (
-                  <button onClick={this.handleUnFollow}>UnFollow</button>
-                )
-              }
-            }
-          })()}
-          <div>
-            <ul>
-              {(() => {
-                if (microposts) {
-                  return (
-                    microposts.map((micropost, i) =>
-                      <li key={i}>
-                        {micropost.content}
-                      </li>
-                    )
-                  )
-                }
-              })()}
-            </ul>
+          <div style={{ margin: 10 }}>
+            <Card>
+              <CardContent>
+                <Typography color="textSecondary">
+                  User
+                </Typography>
+
+                <Typography variant="headline">
+                  {user.name}
+                </Typography>
+
+                <Typography color="textSecondary">
+                  Email : {user.email}
+                </Typography>
+
+                <div style={{ margin: 10 }}>
+                  <FollowButton {...this.props} />
+                </div>
+              </CardContent>
+            </Card>
           </div>
+
+          <MicropostList />
         </div>
       )
     )
