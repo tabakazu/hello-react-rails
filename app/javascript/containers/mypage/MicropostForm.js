@@ -50,7 +50,7 @@ class MicropostForm extends React.Component {
             <Typography color="textSecondary">
               New Post Form
             </Typography>
-            
+
             <form onSubmit={this.handleSubmit}>
               <div style={{ margin: 10 }}>
                 <TextField
