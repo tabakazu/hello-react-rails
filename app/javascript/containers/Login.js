@@ -3,6 +3,9 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoginForm from '../containers/login/LoginForm'
 
+// Material UI
+import Grid from '@material-ui/core/Grid'
+
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -13,7 +16,13 @@ class Login extends React.Component {
       this.props.state.login.isLoggedIn ? (
         <Redirect to="/" />
       ) : (
-        <LoginForm />
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <div style={{ margin: 10 }}>
+              <LoginForm />
+            </div>
+          </Grid>
+        </Grid>
       )
     )
   }

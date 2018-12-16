@@ -49,7 +49,7 @@ class TimelineList extends React.Component {
               Timeline
             </Typography>
           </CardContent>
-          
+
           <Table>
             <TableBody>
               {timelineList}

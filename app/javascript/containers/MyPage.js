@@ -4,6 +4,7 @@ import MicropostForm from '../containers/mypage/MicropostForm'
 import TimelineList from '../containers/mypage/TimelineList'
 
 // Material UI
+import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
@@ -17,27 +18,33 @@ class MyPage extends React.Component {
     const user = this.props.state.login.user
     return (
       <div>
-        <div style={{ margin: 10 }}>
-          <Card>
-            <CardContent>
-              <Typography color="textSecondary">
-                User
-              </Typography>
+        <Grid container spacing={24}>
+          <Grid item xs={12} md={4}>
+            <div style={{ margin: 10 }}>
+              <Card>
+                <CardContent>
+                  <Typography color="textSecondary">
+                    User
+                  </Typography>
 
-              <Typography variant="headline">
-                {user.name}
-              </Typography>
+                  <Typography variant="headline">
+                    {user.name}
+                  </Typography>
 
-              <Typography color="textSecondary">
-                Email : {user.email}
-              </Typography>
-            </CardContent>
-          </Card>
-        </div>
+                  <Typography color="textSecondary">
+                    Email : {user.email}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </div>
 
-        <MicropostForm />
+            <MicropostForm />
+          </Grid>
 
-        <TimelineList />
+          <Grid item xs={12} md={8}>
+            <TimelineList />
+          </Grid>
+        </Grid>
       </div>
     )
   }
