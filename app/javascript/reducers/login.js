@@ -1,16 +1,20 @@
 const initialState = {
   isLoggedIn: false,
+  isLoading: false,
   isFailed: false
 }
 
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_LOGIN_STATE': {
-      return state
+      return {
+        isLoading: true
+      }
     }
     case 'SET_LOGIN_STATE': {
       return {
         isLoggedIn: true,
+        isLoading: false,
         user: action.user
       }
     }
@@ -19,6 +23,7 @@ export const loginReducer = (state = initialState, action) => {
     }
     case 'LOGIN_FAILURE': {
       return {
+        isLoading: false,
         isFailed: true
       }
     }

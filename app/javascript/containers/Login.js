@@ -12,6 +12,10 @@ class Login extends React.Component {
   }
 
   render () {
+    if (this.props.state.login.isLoading) {
+      return false
+    }
+
     return (
       this.props.state.login.isLoggedIn ? (
         <Redirect to="/" />
