@@ -49,6 +49,7 @@ class LoginForm extends React.Component {
     ) : (
       false
     )
+
     return (
       <div style={{ margin: 10 }}>
         <Card>
@@ -56,7 +57,7 @@ class LoginForm extends React.Component {
             <Typography color="textSecondary">
               Login Form
             </Typography>
-            
+
             <form onSubmit={this.handleSubmit}>
               <div style={{ margin: 10 }}>
                 <TextField

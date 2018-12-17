@@ -21,6 +21,8 @@ export function* handleFetchLoginState(){
           timelines: timelines.data
         }
       }))
+    } else {
+      yield put(loginFailure())
     }
   } catch (e) {
     yield put(loginFailure())
