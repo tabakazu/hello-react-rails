@@ -1,5 +1,5 @@
 class Api::V1::AuthController < ApplicationController
-  before_action :authenticate, only: [:user]
+  before_action :authenticate, only: [:show, :update]
 
   # POST /auth/register
   def register
@@ -25,8 +25,18 @@ class Api::V1::AuthController < ApplicationController
   end
 
   # GET /auth/user
-  def user
+  def show
     render json: @current_user
+  end
+
+  # PATCH /auth/user
+  # PUT /auth/user
+  def update
+    if @current_user.update(user_params)
+      render json: { user: @current_user }
+    else
+      render json: { errors: @current_user.errors }
+    end
   end
 
   private

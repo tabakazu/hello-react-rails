@@ -17,7 +17,9 @@ Rails.application.routes.draw do
       namespace :auth do
         post 'register'
         post 'token'
-        get 'user'
+        get 'user', action: 'show'
+        patch 'user', action: 'update'
+        put 'user', action: 'update'
       end
     end
   end
