@@ -4,7 +4,7 @@ class Api::V1::Users::TimelinesController < ApplicationController
   # GET /users/1/timelines
   def index
     following_ids = @user.following.map { |follow| follow.id }
-    microposts = Micropost.where(user_id: following_ids.push(@user.id))
+    microposts = Micropost.where(user_id: following_ids.push(@user.id)).includes([:user])
     timelines = microposts.map { |micropost|
       {
         :id => micropost.id,
